@@ -1,0 +1,20 @@
+1) First Fit
+100, 500, 200 ,300 , 600
+     p1   p3         p2
+
+p4 is not allocated
+
+2) Best Fit
+100, 500, 200, 300, 600
+     p2   p3   p1   p4
+
+3) Worst Fit
+100, 500, 200, 300, 600
+     p2        p3   p1
+
+p4 is not allocated     
+
+p1 - 212kb
+p2 - 417kb
+p3 - 112kb
+p4 - 426kb
