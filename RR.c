@@ -64,7 +64,7 @@ int main() {
 
 
     while(pno < n || !isempty()) {
-        if(time < p[pno].at && isempty()) {
+        if(time < p[pno].at && ise2mpty()) {
             int idletime = 0;
 
             while(time < p[pno].at) {

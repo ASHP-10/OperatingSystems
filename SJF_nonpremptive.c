@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include <stdbool.h>
 
 struct process{
     char pname[20];
@@ -29,9 +30,8 @@ int main() {
 
         printf("Enter the burst time: ");
         scanf("%d",&p[i].bt);
-        
-        p[i].status = 0;
-          
+
+        p[i].status = 0;     //not yet executed
     }
     
     //sorting based on arrival time
@@ -67,67 +67,45 @@ int main() {
             g[cno].ct = g[cno].st + idletime;
             strcpy(g[cno].name,"I");
         } else {
-        
-		    int min = get_min(time);
-        
-            if(min == -1) {
-                time++;
-                continue;
+            int minbt = __INT_MAX__;
+            int minP = 0;
+            
+            for(int  i = 0; i < n; i++) {
+                if(time >= p[i].at) {
+                    if(p[i].status == 0 && minbt > p[i].bt) {
+                        minP = i;
+                        minbt = p[i].bt;
+                    }
+                } else {
+                    break;
+                }
             }
 
-			if(cno == 0)
-		        g[cno].st = 0;
-		    else
-		        g[cno].st = g[cno - 1].ct;
-		          
-		    g[cno].ct = p[min].bt + g[cno].st;
-		    time = time + p[min].bt;
-		      
-		    strcpy(g[cno].name,p[min].pname);
-		    p[min].status = 1;
-		      
-		    pno++;
-		}
-		cno++;
+            p[minP].status = 1;
+            time += p[minP].bt;
+            g[cno].ct = g[cno].st + p[minP].bt;
+            strcpy(g[cno].name, p[minP].pname);
+            pno++;
+        }
+	cno++;
 	}
 	
 	//gantt printing
-    cno--;
 
-    for(int i = 0; i < g[cno].ct; i++) {
-        printf("___");
-    }
+    for(int i = 0; i < cno; i++)
+        printf("-------");
     printf("\n");
 
-    for(int i = 0; i < pno; i++) {
-        printf("|%s",g[i].name);
-        for(int j = 0; j < g[i].ct - strlen(g[i].name); j++) {
-            printf(" ");
-        }
-    }
-    printf("|\n");
-
-    for(int i = 0; i < g[cno].ct; i++) {
-        printf("---");
-    }
+    for(int i = 0; i < cno; i++)
+        printf("|%s     ",g[i].name);
     printf("\n");
 
-    for(int i = 0; i < g[cno].ct; i++) {
-        printf("%d",g[i].st);
-        for(int j = 0; j < g[i].ct - strlen(g[i].name); i++) {
-            printf(" ");
-        }
-    }
-}
+    for(int i = 0; i < cno; i++) 
+        printf("-------");
+    printf("\n0       ");
 
-int get_min (int time){
-    int min = -1; 
+    for(int i = 0; i < cno; i++)
+        printf("%d      ",g[i].ct);
 
-    for(int i = 0; i < n; i++) {
-        if(p[i].status == 0 && time >= p[i].at && (min == -1 || p[min].bt > p[i].bt)) { 
-            min = i;
-        }
-    }
-
-    return min;
+    return 0;
 }
