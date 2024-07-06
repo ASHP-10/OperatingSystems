@@ -64,7 +64,7 @@ int main() {
 
 
     while(pno < n || !isempty()) {
-        if(time < p[pno].at && ise2mpty()) {
+        if(time < p[pno].at && isempty()) {
             int idletime = 0;
 
             while(time < p[pno].at) {
@@ -85,7 +85,7 @@ int main() {
 				enque(p[pno]);
 				pno++;
 			}
-			
+
 			if (temp2 != NULL && temp2->remaining > 0) {
 				enque(*temp2);
 			}
@@ -97,7 +97,7 @@ int main() {
 
 			*temp2 = deque();
 
-			if(temp2 -> remaining < ts) {
+			if(temp2 -> remaining <= ts) {
 				g[cno].ct = g[cno].st + temp2 -> remaining;
 				time += temp2 -> remaining;
 				temp2 -> remaining = 0;
@@ -116,9 +116,8 @@ int main() {
 					break;
 				}
 			}
-
-			cno++;
 		}
+		cno++;
 	}
 
 	//gantt chart printing
