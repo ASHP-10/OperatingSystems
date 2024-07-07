@@ -27,38 +27,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-}}}}}
-}
-}
-{}}; ,/
-
-}
-;
-;
-;
-;
-
-;
-;
-}
-;dafd;
-;fsdaf
-;
-;
-innt;
-;__intptr_t;
-labs;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;s
-d;
-s;d 
-a
