@@ -72,7 +72,7 @@ int main()
         int index = -1;
         for(int j = 0; j < nb; j++) {
             int bs = m[j].remaining - p[i].size;
-            if(bs > max && bs >=0 && bs >= 0) {
+            if(bs > max && bs >=0) {
                 max = bs;
                 index = j;
             }
