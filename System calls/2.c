@@ -9,7 +9,7 @@ int main() {
 
     if (pid < 0) {
         printf("fork failed");
-        return 1;
+        return -1;
     } else if (pid == 0) {
         
         printf("Child: My PID is %d, my parent's PID is %d\n", getpid(), getppid());

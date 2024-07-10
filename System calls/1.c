@@ -9,7 +9,7 @@ int main() {
 
     if (pid < 0) {
         printf("Fork failed");
-        return 1;
+        return -1;
     } else if (pid == 0) {
         printf("I am child\n");
     } else {
