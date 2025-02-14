@@ -40,5 +40,30 @@ int main() {
 
     std::sort(symbols.begin(), symbols.end(), comparator);
 
-        return 0;
+    // for (auto symbol : symbols) {
+    //     std::cout << symbol.frequency;
+    // }
+
+    for (int i = 0; i < symbols.size(); ++i) {
+        for (int j = symbols.size() - 1; j > i; --j) {
+            symbols[i].value += "1";
+        }
+
+        if (i != 0) {
+            symbols[i].value += "0";
+        }
+    }
+
+    for (int i = 0; i < input.size(); ++i) {
+        for (auto &symbol : symbols) {
+            if (symbol.character == input[i]) {
+                output += symbol.value;
+                break;
+            }
+        }
+    }
+
+    std::cout << "The Huffman Encoding is " << output << std::endl;
+
+    return 0;
 }
