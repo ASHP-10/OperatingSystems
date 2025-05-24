@@ -5,6 +5,7 @@ This repository contains C++ implementations of core Operating System algorithms
 ## Included Algorithms
 - **Page Replacement Algorithms**: FIFO, LRU, Optimal
 - **CPU Scheduling Algorithms**: FCFS, SJF, Round Robin, Priority Scheduling
+- **Disk Scheduling**: SCAN, LOOK, FCFS
 - **Deadlock Avoidance**: Banker's Algorithm
 - **Memory Management**: First Fit, Best Fit, Worst Fit
 
@@ -13,5 +14,5 @@ Each program is implemented with a focus on clarity and correctness, and is desi
 ## How to Run
 Compile using `g++`:
 ```bash
-g++ page_replacement.cpp -o page_replacement
-./page_replacement
+g++ filename.cpp -o filename
+./filename
